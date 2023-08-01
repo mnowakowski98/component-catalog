@@ -1,9 +1,20 @@
+using Microsoft.EntityFrameworkCore;
+using api.Components;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+var folder = Environment.SpecialFolder.LocalApplicationData;
+var path = Environment.GetFolderPath(folder);
+var dbPath = System.IO.Path.Join(path, "components.db");
+builder.Services.AddDbContext<ComponentContext>(options => options.UseSqlite($"Data Source={dbPath}"));
+
+builder.Services.AddTransient<IComponentService, ComponentService>();
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
@@ -14,24 +25,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseRouting();
+
 app.UseHttpsRedirection();
 
-app.MapGet("/components", () =>
-{
-    var components = new List<Component>
-    {
-        new Component() { Name = "Derp" },
-        new Component() { Name = "Derp2" },
-        new Component() { Name = "Derp3" }
-    };
-    return components;
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
+app.MapControllers().WithOpenApi();
 
 app.Run();
-
-record Component {
-    public required string Name { get; set; }
-
-}
