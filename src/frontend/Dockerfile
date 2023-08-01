@@ -7,9 +7,11 @@
 FROM node:current-alpine
 WORKDIR /app
 # COPY --from=build ./build .
-COPY ./build .
+COPY ./build ./.next
+COPY package.json .
+COPY package-lock.json .
 RUN npm install --production
 
 EXPOSE 3000
 
-ENTRYPOINT ["npm", "start"]
+ENTRYPOINT ["npm", "run", "start"]
