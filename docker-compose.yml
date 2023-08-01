@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  database:
+    image: crate
+    ports:
+      - 4200:4200
+  api:
+    build: ./src/api
+    ports:
+      - 5187:80
+  frontend:
+    build: ./src/frontend
+    ports:
+      - 3000:3000
+    depends_on:
+      - api

@@ -2,7 +2,7 @@ import Component from './component'
 import ComponentCard from './component-card'
 
 async function getComponents() {
-    const res = await fetch('http://localhost:5187/components', { cache: 'no-cache' })
+    const res = await fetch(`${process.env.API_HOST}/components`, { cache: 'no-cache' })
     const data = (await res.json()) as Component[]
     return data
 }
