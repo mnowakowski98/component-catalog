@@ -9,7 +9,7 @@ export default function ComponentAddPage() {
         <form
             className="flex flex-col gap-2"
             onSubmit={event => {
-                fetch(`http://localhost:5222/component?Name=${name}`, {
+                fetch(`${process.env.NEXT_PUBLIC_API_HOST}/component?Name=${name}`, {
                     method: 'POST',
                     cache: 'no-cache'
                 }).then(() => {
