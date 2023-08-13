@@ -1,0 +1,5 @@
+type Quantity {
+    total: Int!
+    inUse: Int!
+    available: Int!
+}

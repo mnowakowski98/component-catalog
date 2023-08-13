@@ -20,7 +20,7 @@ export default function RootLayout({
       <title>Component Catalog</title>
     </head>
     <body className={inter.className}>
-      <header className='bg-green-100 font-extrabold text-lg'>
+      <header className='bg-green-50 font-extrabold text-lg'>
         <nav className='flex flex-row gap-4 px-8 py-4'>
           <Link href='/'>Main</Link>
           <Link href='/components'>Components</Link>

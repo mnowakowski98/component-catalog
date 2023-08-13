@@ -1,12 +1,18 @@
 version: "3.8"
 services:
   database:
-    image: mongo
+    image: crate
     ports:
-      - 27017:27017
+      - 4200:4200
+      - 4300:4300
+      - 5432:5432
+  schema:
+    build: ./src/schema
+    ports:
+      - 4000:4000
   frontend:
     build: ./src/frontend
     ports:
       - 3000:3000
     depends_on:
-      - api
+      - schema

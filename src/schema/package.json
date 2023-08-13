@@ -1,0 +1,23 @@
+{
+  "name": "component-catalog-schema",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "description": "",
+  "scripts": {
+    "build": "npx tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/server": "^4.9.1",
+    "@graphql-tools/mock": "^9.0.0",
+    "@graphql-tools/schema": "^10.0.0",
+    "graphql": "^16.7.1",
+    "graphql-tag": "^2.12.6"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.10",
+    "typescript": "^5.1.6"
+  }
+}
